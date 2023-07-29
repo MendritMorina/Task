@@ -11,8 +11,10 @@ connectDB();
 app.use(express.json());
 
 const authRoute = require("./routes/userRoutes");
+const carRoute = require("./routes/carRoutes");
 
 app.use("/api/auth", authRoute);
+app.use("/api/cars", carRoute);
 
 app.use(handleMiddleware);
 

@@ -17,12 +17,7 @@ const authentication = asyncHandler(async (request, response, next) => {
     next(new ApiError("Wrong auth header", httpCodes.UNAUTHORIZED));
   }
 
-  console.log(token);
-  //token is
-  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YzRlNDIwYzBlYmQ4ZWY3ZjYyZjBhYyIsImRhdGEiOiJtZW5kcml0IiwiaWF0IjoxNjkwNjMzMTUxLCJleHAiOjE2OTMyMjUxNTF9.WFpG1q0zx0_YX5TXYTEHCZqBa6o2iRgzj_bNjAX8tWc
-
   const decodedResult = await decode(token);
-  console.log(decodedResult);
   if (!decodedResult.success) {
     next(new ApiError(decodedResult.error, httpCodes.UNAUTHORIZED));
     return;

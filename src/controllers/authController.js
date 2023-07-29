@@ -1,12 +1,9 @@
-// Imports: local files.
 const User = require("../models/userModel");
 const ApiError = require("../configs/apiError");
 const jwt = require("../configs/jwt");
-// const asyncHandler = require("../middlewares/asyncHandler");
 const asyncHandler = require("express-async-handler");
 const httpCodes = require("../configs/httpCodes");
 const { validationSignUp } = require("../validations/authValidations");
-console.log(validationSignUp);
 
 /**
  * @description Register.

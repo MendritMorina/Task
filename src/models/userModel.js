@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 
 const Base = require("./base");
 
-// User Schema that is used to represent single User in our API.
 const UserSchema = new mongoose.Schema({
   full_name: {
     type: String,
@@ -25,7 +24,6 @@ const UserSchema = new mongoose.Schema({
   ...Base,
 });
 
-// Statics & instance methods.
 UserSchema.statics.passwordChangedAfter = function (
   passwordChangedAt,
   tokenIat
@@ -42,7 +40,6 @@ UserSchema.statics.comparePasswords = async function (
   return await bcrypt.compare(candidatePassword, hashedPassword);
 };
 
-// Hooks & middlewares.
 UserSchema.pre("save", async function (next) {
   if (this.isNew) {
     const salt = await bcrypt.genSalt();
@@ -54,5 +51,4 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
-// Exports of this file.
 module.exports = mongoose.model("User", UserSchema);
